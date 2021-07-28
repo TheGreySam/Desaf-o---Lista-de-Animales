@@ -1,14 +1,14 @@
-"use Strictly"
+"use strict"
 
 class Propietario {
-  constructor(nombre, direccion, telefono) {
+  constructors(nombre, direccion, telefono) {
     this.nombre = nombre;
     this.direccion = direccion;
     this.telefono = telefono;
   }
 
   datosPropietario() {
-    console.log(
+    return (
       `Los datos del propietario son: Nombre: ${this.nombre} -
       Direccion: ${this.direccion} - Telefono: ${this.telefono}`
 
@@ -16,17 +16,18 @@ class Propietario {
   }
 }
 class Animal extends Propietario {
-  constructor(nombreDelPropietario,
+  constructors(
+    nombreDelPropietario,
     direccionDelPropietario,
     telefonoDelPropietario,
     tipo) {
-    super(
+    super.animal(
       nombreDelPropietario,
       direccionDelPropietario,
       telefonoDelPropietario
     );
     this._tipo = tipo;
-  }
+  };
 
   get tipo() {
     return this._tipo;
@@ -34,7 +35,7 @@ class Animal extends Propietario {
 }
 
 class Mascota {
-  constructor(nombreDelPropietario,
+  constructors(nombreDelPropietario,
     direccionDelPropietario,
     telefonoDelPropietario,
     tipoDeAnimal,
@@ -61,7 +62,7 @@ class Mascota {
 
   }
 }
-//const Perrito = new Animal("Luis", "Av Victoria 186", "+56934123772", "Perro");
+
 
 const propietarioElement = document.querySelector("#propietario");
 const telefonoElement = document.getElementById("telefono");
@@ -71,6 +72,8 @@ const tipoElement = document.getElementById("tipo");
 const enfermedadElement = document.getElementById("enfermedad");
 const btnElement = document.querySelector(".btn");
 
+const resultadoElement = document.getElementById("resultadoElement");
+
 btnElement.addEventListener("click", (event) => {
   event.preventDefault();
   const nombreDelPropietario = propietarioElement.value;
@@ -79,14 +82,27 @@ btnElement.addEventListener("click", (event) => {
   const nombreDeLaMascota = nombreMascotaElement.value;
   const tipoDeMascota = tipoElement.value;
   const enfermedadDeLaMascota = enfermedadElement.value;
-  
-  const mascota = new Mascota(nombreDelPropietario,
-    direccionDelPropietario, 
+
+  const mascota = new Mascota(
+    nombreDeLaMascota,
+    direccionDelPropietario,
     telefonoDelPropietario,
     tipoDeMascota,
-    nombreDeLaMascota, 
-    enfermedadDeLaMascota
-    );
+    nombreDelPropietario,
 
-    console.log(mascota);
+    enfermedadDeLaMascota
+  );
+
+  console.log(mascota);
+
+  resultadoElement.innerHTML =
+    `
+  <ul>
+      <li>${mascota.datosPropietario()}</li>
+      <li>El tipo de animal es un: ${mascota.tipo},
+      mientras que el nombre de la mascota es: ${mascota.nombre}
+      y la enfermedad es: ${mascota.enfermedad}</li>
+
+    </ul>
+    `
 });
