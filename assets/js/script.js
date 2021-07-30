@@ -1,27 +1,24 @@
-"use strict"
+"use strict";
 
 class Propietario {
-  constructors(nombre, direccion, telefono) {
+  constructor(nombre, direccion, telefono) {
     this.nombre = nombre;
     this.direccion = direccion;
     this.telefono = telefono;
   }
 
   datosPropietario() {
-    return (
-      `Los datos del propietario son: Nombre: ${this.nombre} -
-      Direccion: ${this.direccion} - Telefono: ${this.telefono}`
-
-    );
+    return `Los datos del propietario son: Nombre: ${this.nombre} -
+      Direccion: ${this.direccion} - Telefono: ${this.telefono}`;
   }
 }
 class Animal extends Propietario {
-  constructors(
+  constructor(
     nombreDelPropietario,
     direccionDelPropietario,
     telefonoDelPropietario,
     tipo) {
-    super.animal(
+    super(
       nombreDelPropietario,
       direccionDelPropietario,
       telefonoDelPropietario
@@ -35,7 +32,7 @@ class Animal extends Propietario {
 }
 
 class Mascota {
-  constructors(nombreDelPropietario,
+  constructor(nombreDelPropietario,
     direccionDelPropietario,
     telefonoDelPropietario,
     tipoDeAnimal,
@@ -83,6 +80,16 @@ btnElement.addEventListener("click", (event) => {
   const tipoDeMascota = tipoElement.value;
   const enfermedadDeLaMascota = enfermedadElement.value;
 
+
+  console.log({
+    nombreDelPropietario,
+    telefonoDelPropietario,
+    direccionDelPropietario,
+    nombreDeLaMascota,
+    tipoDeMascota,
+    enfermedadDeLaMascota,
+  });
+
   const mascota = new Mascota(
     nombreDeLaMascota,
     direccionDelPropietario,
@@ -104,5 +111,5 @@ btnElement.addEventListener("click", (event) => {
       y la enfermedad es: ${mascota.enfermedad}</li>
 
     </ul>
-    `
+    `;
 });
